@@ -28,15 +28,17 @@ class TestBoard < MiniTest::Test
   end
 
   def test_move_piece
-    @board1.move_piece("Andrew", 3)
-    assert_equal(3, @board1.position("Andrew"))
-    @board1.move_piece("Andrew", 4)
-    assert_equal(7, @board1.position("Andrew"))
+    @board1.move_piece(3)
+    assert_equal(3, @board1.position("Ben"))
+    @board1.move_piece(4)
+    assert_equal(7, @board1.position("Ben"))
+    @board1.move_piece(4)
+    assert_equal(0, @board1.position("Andrew"))
   end
 
   def test_move_piece_die
-    @board1.move_piece("Andrew", @die1.roll)
-    assert_equal(true, (1..6).include?(@board1.position("Andrew")))
+    @board1.move_piece(@die1.roll)
+    assert_equal(true, (1..6).include?(@board1.position("Ben")))
   end
 
   def test_current_player
@@ -51,8 +53,17 @@ class TestBoard < MiniTest::Test
 
   def test_has_current_player_won
     assert_equal(false, @board1.has_current_player_won())
-    @board1.move_piece("Ben", 101)
+    @board1.move_piece(101)
     assert_equal(true, @board1.has_current_player_won())
   end
+
+  # def test_take_turn
+  #   @board1.take_turn
+  #   assert_equal(0, @board1.current_player.position)
+  #   assert_equal(@piece2, @board1.current_player())
+
+  #   expected = (1..6).include?(@board1.position("Ben"))
+  #   assert_equal(true, expected)
+  # end
 
 end

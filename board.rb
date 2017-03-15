@@ -13,12 +13,8 @@ class Board
      end
   end
 
-  def move_piece(piece_name, size_of_move)
-    piece_to_move = nil
-    for each_piece in @pieces
-      piece_to_move = each_piece if each_piece.name == piece_name
-    end
-     piece_to_move.move_position(size_of_move)
+  def move_piece(size_of_move)
+    current_player().move_position(size_of_move)
   end
 
   def current_player()
@@ -32,4 +28,9 @@ class Board
   def has_current_player_won()
     return current_player().position >= @board_size
   end
+
+  # def take_turn
+  #   move_piece(@die1)
+
+  # end
 end
