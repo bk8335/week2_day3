@@ -13,5 +13,14 @@ class Board
      end
   end
 
+  def move_piece(piece_name, size_of_move)
+    piece_to_move = nil
 
+    for each_piece in @pieces
+      piece_to_move = each_piece if each_piece.name == piece_name
+     end
+
+     piece_to_move.move_position(size_of_move)
+
+  end
 end

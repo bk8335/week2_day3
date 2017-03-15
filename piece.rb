@@ -7,4 +7,8 @@ attr_reader :name, :position
     @position = 0
   end
 
+  def move_position(size_of_move)
+    @position += size_of_move
+  end
+
 end
