@@ -5,5 +5,9 @@ class Die
   def initialize()
     @sides = 6
   end
-  
+
+  def roll()
+    return rand(1 .. @sides)
+  end
+
 end
