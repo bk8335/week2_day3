@@ -15,8 +15,13 @@ class TestBoard < MiniTest::Test
     pieces = [@piece1, @piece2, @piece3]
 
     @snake1 = Hazard.new(15, -2)
+    @snake2 = Hazard.new(99, -98)
+    @ladder1 = Hazard.new(37, 40)
+    @ladder2 = Hazard.new(63, 5)
 
-    @board1 = Board.new(pieces, @snake1)
+    hazards = [@snake1, @snake2, @ladder1, @ladder2]
+
+    @board1 = Board.new(pieces, hazards)
 
     @die1 = Die.new()
 

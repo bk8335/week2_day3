@@ -2,10 +2,10 @@ class Board
   
   attr_reader :board_size
 
-  def initialize(pieces, hazard)
+  def initialize(pieces, hazards)
     @pieces = pieces
     @board_size = 100
-    @hazard = hazard
+    @hazards = hazards
   end
 
   def position(piece_name)
@@ -16,8 +16,10 @@ class Board
 
   def move_piece(size_of_move)
     current_player().move_position(size_of_move)
-    if current_player.position == @hazard.start_point
-      current_player().move_position(@hazard.board_change)
+    for hazard in @hazards
+      if current_player.position == hazard.start_point
+       current_player().move_position(hazard.board_change)
+      end
     end
   end
 
