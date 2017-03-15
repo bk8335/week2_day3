@@ -3,6 +3,7 @@ require('minitest/rg')
 require_relative('../board')
 require_relative('../piece')
 require_relative('../die')
+require_relative('../hazard')
 
 class TestBoard < MiniTest::Test
 
@@ -13,9 +14,13 @@ class TestBoard < MiniTest::Test
 
     pieces = [@piece1, @piece2, @piece3]
 
-    @board1 = Board.new(pieces)
+    @snake1 = Hazard.new(15, -2)
+
+    @board1 = Board.new(pieces, @snake1)
 
     @die1 = Die.new()
+
+
   end
 
   def test_board_size
@@ -34,6 +39,11 @@ class TestBoard < MiniTest::Test
     assert_equal(7, @board1.position("Ben"))
     @board1.move_piece(4)
     assert_equal(0, @board1.position("Andrew"))
+  end
+
+  def test_move_piece__snake
+    @board1.move_piece(15)
+    assert_equal(13, @board1.current_player.position)
   end
 
   def test_move_piece_die
